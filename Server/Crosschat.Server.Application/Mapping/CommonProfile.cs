@@ -6,15 +6,16 @@ namespace Crosschat.Server.Application.Mapping
 {
     public class CommonProfile : Profile
     {
-        protected override void Configure()
+        /// <summary>
+        /// Ctor
+        /// </summary>
+        public CommonProfile()
         {
-            Mapper.CreateMap<User, UserDto>();
-                //.ForMember(dto => dto.IsInChat, opt => opt.Ignore());
+            CreateMap<User, UserDto>();
+            //.ForMember(dto => dto.IsInChat, opt => opt.Ignore());
 
-            Mapper.CreateMap<PublicMessage, PublicMessageDto>();
-                //.ForMember(dto => dto.AuthorName, opt => opt.ResolveUsing(entity => entity.Author.Name))
-
-            base.Configure();
+            CreateMap<PublicMessage, PublicMessageDto>();
+            //.ForMember(dto => dto.AuthorName, opt => opt.ResolveUsing(entity => entity.Author.Name))
         }
     }
 }
