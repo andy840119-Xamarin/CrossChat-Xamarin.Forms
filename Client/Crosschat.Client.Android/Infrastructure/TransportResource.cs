@@ -23,12 +23,20 @@ namespace Crosschat.Client.Droid.Infrastructure
         
         public async Task ConnectAsync()
         {
-            IsConnected = false;
-            _triedConnect = true;
-            _tcpClient = new TcpClient();
-            await _tcpClient.ConnectAsync(GlobalConfig.IpAddress, GlobalConfig.Port).ConfigureAwait(false);
-            StartListening();
-            IsConnected = true;
+            try
+            {
+                IsConnected = false;
+                _triedConnect = true;
+                _tcpClient = new TcpClient();
+                await _tcpClient.ConnectAsync(GlobalConfig.IpAddress, GlobalConfig.Port).ConfigureAwait(false);
+                StartListening();
+                IsConnected = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                //throw;
+            }
         }
 
         public async void DropConnection()
