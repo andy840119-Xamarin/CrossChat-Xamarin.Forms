@@ -110,3 +110,7 @@ UpgradeLog*.XML
 .vs/Solution.Client/v15/Server/sqlite3/storage.ide
 .vs/Solution.Client/v15/Server/sqlite3/db.lock
 .vs/Solution.Client/v15/Server/sqlite3/storage.ide-wal
+.vs/Solution.Server/v15/Server/sqlite3/storage.ide-wal
+.vs/Solution.Server/v15/Server/sqlite3/storage.ide-shm
+.vs/Solution.Server/v15/Server/sqlite3/storage.ide
+.vs/Solution.Server/v15/Server/sqlite3/db.lock
