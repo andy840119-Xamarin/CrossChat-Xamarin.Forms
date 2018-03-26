@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using Crosschat.Client.iOS.Infrastructure;
@@ -35,11 +36,21 @@ namespace Crosschat.Client.iOS.Infrastructure
 
         public byte[] Serialize<T>(T obj)
         {
-            using (var ms = new MemoryStream())
+            try
             {
-                _protobufModel.Serialize(ms, obj);
-                return ms.ToArray();
+                using (var ms = new MemoryStream())
+                {
+                    _protobufModel.Serialize(ms, obj);
+                    return ms.ToArray();
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                
+                return new byte[0];
+            }
+            
         }
 
         public T Deserialize<T>(byte[] bytes)
