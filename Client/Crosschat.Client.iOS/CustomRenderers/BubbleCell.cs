@@ -7,7 +7,7 @@
 //   Miguel de Icaza
 //
 
-using System.Drawing;
+using CoreGraphics;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 

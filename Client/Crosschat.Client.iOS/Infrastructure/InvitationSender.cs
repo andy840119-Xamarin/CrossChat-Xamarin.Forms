@@ -1,4 +1,4 @@
-﻿using Crosschat.Client.iOS.Infrastructure;
+using Crosschat.Client.iOS.Infrastructure;
 using Crosschat.Client.Model.Contracts;
 using Crosschat.Client.Model.Entities;
 using MonoTouch.Foundation;

@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Crosschat.Client.iOS.Infrastructure;
 using Crosschat.Client.Model.Contracts;
 using Xamarin.Forms;

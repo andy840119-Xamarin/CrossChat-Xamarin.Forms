@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Xml.Serialization;
 using Crosschat.Client.iOS.Infrastructure;
 using Crosschat.Client.Model.Contracts;

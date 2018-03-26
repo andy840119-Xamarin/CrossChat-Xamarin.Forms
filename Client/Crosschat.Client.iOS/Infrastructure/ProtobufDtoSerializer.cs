@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Linq;
 using Crosschat.Client.iOS.Infrastructure;
 using Crosschat.Server.Application.DataTransferObjects.Messages;
