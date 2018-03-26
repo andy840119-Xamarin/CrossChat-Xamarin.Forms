@@ -1,7 +1,7 @@
 using Crosschat.Client.iOS.CustomRenderers;
 using Crosschat.Client.ViewModels;
 using Crosschat.Client.Views.Controls;
-using MonoTouch.UIKit;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
@@ -11,7 +11,7 @@ namespace Crosschat.Client.iOS.CustomRenderers
 {
     public class MessageRenderer : ViewCellRenderer
     {
-        public override UITableViewCell GetCell(Cell item, UITableView tv)
+        public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
         {
             var textVm = item.BindingContext as TextMessageViewModel;
             if (textVm != null)
@@ -20,7 +20,7 @@ namespace Crosschat.Client.iOS.CustomRenderers
                 var chatBubble = new ChatBubble(!textVm.IsMine, text);
                 return chatBubble.GetCell(tv);
             }
-            return base.GetCell(item, tv);
+            return base.GetCell(item, reusableCell, tv);
         }
     }
 }

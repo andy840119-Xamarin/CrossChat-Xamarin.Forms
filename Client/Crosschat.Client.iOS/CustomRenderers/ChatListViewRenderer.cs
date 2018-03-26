@@ -2,8 +2,8 @@ using System;
 using System.Reflection;
 using Crosschat.Client.iOS.CustomRenderers;
 using Crosschat.Client.Views.Controls;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
@@ -41,22 +41,22 @@ namespace Crosschat.Client.iOS.CustomRenderers
             return this.GetCellInternal(tableView, indexPath);
         }
 
-        public override int RowsInSection(UITableView tableview, int section)
+        public override nint RowsInSection(UITableView tableview, nint section)
         {
             return this._underlyingTableSource.RowsInSection(tableview, section);
         }
 
-        public override float GetHeightForHeader(UITableView tableView, int section)
+        public override nfloat GetHeightForHeader(UITableView tableView, nint section)
         {
             return this._underlyingTableSource.GetHeightForHeader(tableView, section);
         }
 
-        public override UIView GetViewForHeader(UITableView tableView, int section)
+        public override UIView GetViewForHeader(UITableView tableView, nint section)
         {
             return this._underlyingTableSource.GetViewForHeader(tableView, section);
         }
 
-        public override int NumberOfSections(UITableView tableView)
+        public override nint NumberOfSections(UITableView tableView)
         {
             return this._underlyingTableSource.NumberOfSections(tableView);
         }
@@ -71,12 +71,12 @@ namespace Crosschat.Client.iOS.CustomRenderers
             return this._underlyingTableSource.SectionIndexTitles(tableView);
         }
 
-        public override string TitleForHeader(UITableView tableView, int section)
+        public override string TitleForHeader(UITableView tableView, nint section)
         {
             return this._underlyingTableSource.TitleForHeader(tableView, section);
         }
 
-        public override float GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+        public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
         {
             var uiCell = (BubbleCell)GetCellInternal(tableView, indexPath);
 

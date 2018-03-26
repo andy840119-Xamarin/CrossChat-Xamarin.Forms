@@ -2,7 +2,7 @@ using System.IO;
 using System.Xml.Serialization;
 using Crosschat.Client.iOS.Infrastructure;
 using Crosschat.Client.Model.Contracts;
-using MonoTouch.Foundation;
+using Foundation;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(Storage))]

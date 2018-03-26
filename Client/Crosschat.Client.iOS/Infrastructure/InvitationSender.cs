@@ -1,8 +1,8 @@
 using Crosschat.Client.iOS.Infrastructure;
 using Crosschat.Client.Model.Contracts;
 using Crosschat.Client.Model.Entities;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(InvitationSender))]

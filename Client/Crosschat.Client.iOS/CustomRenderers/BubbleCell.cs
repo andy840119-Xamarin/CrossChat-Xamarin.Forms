@@ -7,9 +7,10 @@
 //   Miguel de Icaza
 //
 
+using System.Drawing;
 using CoreGraphics;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace Crosschat.Client.iOS.CustomRenderers
 {
@@ -60,17 +61,17 @@ namespace Crosschat.Client.iOS.CustomRenderers
             base.LayoutSubviews();
             var frame = ContentView.Frame;
             var size = GetSizeForText(this, label.Text) + BubblePadding;
-            imageView.Frame = new RectangleF(new PointF(isLeft ? 10 : frame.Width - size.Width - 10, frame.Y), size);
+            imageView.Frame = new RectangleF(new PointF((float) (isLeft ? 10 : frame.Width - size.Width - 10), (float) frame.Y), size);
             view.SetNeedsDisplay();
             frame = imageView.Frame;
-            label.Frame = new RectangleF(new PointF(frame.X + (isLeft ? 12 : 8), frame.Y + 6), size - BubblePadding);
+            label.Frame = new RectangleF(new PointF((float) (frame.X + (isLeft ? 12 : 8)), (float) (frame.Y + 6)), size - BubblePadding);
         }
 
         static internal SizeF BubblePadding = new SizeF(22, 16);
 
         static internal SizeF GetSizeForText(UIView tv, string text)
         {
-            return tv.StringSize(text, font, new SizeF(tv.Bounds.Width * .7f - 10 - 22, 99999));
+            return (SizeF) UIStringDrawing.StringSize(text, font, new SizeF((float) (tv.Bounds.Width * .7f - 10 - 22), 99999));
         }
 
         public void Update(string text)

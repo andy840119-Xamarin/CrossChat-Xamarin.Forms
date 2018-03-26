@@ -7,35 +7,41 @@
 //   Miguel de Icaza
 //
 
+using System;
+using Foundation;
 using MonoTouch.Dialog;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using UIKit;
+using Element = Xamarin.Forms.Element;
 
 namespace Crosschat.Client.iOS.CustomRenderers
 {
+    
     public class ChatBubble : Element, IElementSizing
     {
         bool isLeft;
 
+        private string _text;
+
         public ChatBubble(bool isLeft, string text)
-            : base(text)
+            : base()
         {
+            _text = text;
             this.isLeft = isLeft;
         }
 
-
-        public override UITableViewCell GetCell(UITableView tv)
+        public UITableViewCell GetCell(UITableView tv)
         {
             var cell = tv.DequeueReusableCell(isLeft ? BubbleCell.KeyLeft : BubbleCell.KeyRight) as BubbleCell;
             if (cell == null)
                 cell = new BubbleCell(isLeft);
-            cell.Update(Caption);
+            cell.Update(_text);
             return cell;
         }
 
-        public float GetHeight(UITableView tableView, NSIndexPath indexPath)
+        public nfloat GetHeight(UITableView tableView, NSIndexPath indexPath)
         {
-            return BubbleCell.GetSizeForText(tableView, Caption).Height + BubbleCell.BubblePadding.Height;
+            return BubbleCell.GetSizeForText(tableView, _text).Height + BubbleCell.BubblePadding.Height;
         }
     }
+    
 }

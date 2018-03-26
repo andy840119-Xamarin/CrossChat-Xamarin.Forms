@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AddressBook;
 using Crosschat.Client.iOS.Infrastructure;
 using Crosschat.Client.Model.Contracts;
 using Crosschat.Client.Model.Entities;
-using MonoTouch.AddressBook;
-using MonoTouch.Foundation;
+using Foundation;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(ContactsRepository))]
