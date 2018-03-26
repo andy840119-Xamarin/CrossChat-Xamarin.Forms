@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Crosschat.Client.Model;
@@ -91,24 +92,32 @@ namespace Crosschat.Client.ViewModels
             }
             else
             {
-                string platform = Device.OnPlatform("iOS", "Android", "WP8") + (Device.Idiom == TargetIdiom.Tablet ? " Tablet" : "");
+                try
+                {
+                    string platform = Device.OnPlatform("iOS", "Android", "WP8") + (Device.Idiom == TargetIdiom.Tablet ? " Tablet" : "");
 
-                IsBusy = true;
-                var registrationResult = await _appManager.AccountManager.Register(Name, Password, ParseAge(SelectedAge), SelectedSex == "Male", SelectedCountry, platform);
-                IsBusy = false;
+                    IsBusy = true;
+                    var registrationResult = await _appManager.AccountManager.Register(Name, Password, ParseAge(SelectedAge), SelectedSex == "Male", SelectedCountry, platform);
+                    IsBusy = false;
 
-                if (registrationResult == RegistrationResponseType.Success)
-                {
-                    await new HomeViewModel(_appManager).ShowAsync();
+                    if (registrationResult == RegistrationResponseType.Success)
+                    {
+                        await new HomeViewModel(_appManager).ShowAsync();
+                    }
+                    else if (registrationResult == RegistrationResponseType.InvalidData)
+                    {
+                        await Notify("Invalid data", "Please, fill all the fields");
+                    }
+                    else if (registrationResult == RegistrationResponseType.NameIsInUse)
+                    {
+                        await Notify("Invalid data", "This name is already taken by someone else");
+                    }
                 }
-                else if (registrationResult == RegistrationResponseType.InvalidData)
+                catch (Exception e)
                 {
-                    await Notify("Invalid data", "Please, fill all the fields");
+                    await Notify("Exception", e.Message);
                 }
-                else if (registrationResult == RegistrationResponseType.NameIsInUse)
-                {
-                    await Notify("Invalid data", "This name is already taken by someone else");
-                }
+                
             }
         }
 
